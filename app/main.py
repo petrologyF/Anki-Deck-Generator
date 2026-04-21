@@ -3,6 +3,7 @@ import os
 from .core import AnkiGenerator
 import time
 import ctypes
+from pathlib import Path
 
 def main(page: ft.Page):
     try:
@@ -15,17 +16,21 @@ def main(page: ft.Page):
     # 1. Page Initial Setup
     # ==========================================
     page.title = "Anki Deck Generator"
-    page.window_width = 1400
-    page.window_height = 950
-    page.window_resizable = True
+    page.window.width = 1400
+    page.window.height = 950
+    page.window.resizable = True
     page.theme_mode = ft.ThemeMode.DARK
     
     # --- ICON CONFIGURATION ---
-    # デスクトップアプリとしてのウィンドウアイコン（パスの先頭に / をつける）
-    page.window_icon = "/icon.png" 
+    # Web表示用の favicon (assets_dir からの相対パスでOK)
+    page.icon = "favicon.png"
 
-    # Webアプリとして動かした場合のファビオン
-    page.icon = "/icon.png"
+    # デスクトップアプリのウィンドウアイコン
+    # Windows の開発実行時は絶対パスの方が安定するため、pathlib で動的に解決する
+    icon_path = Path(__file__).resolve().parent.parent / "assets" / "icon.ico"
+    if icon_path.exists():
+        page.window.icon = str(icon_path)
+    
     page.update() # Apply icon changes immediately
     
     # Remove all default margins and gaps!
