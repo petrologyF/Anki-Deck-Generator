@@ -1,6 +1,6 @@
 import flet as ft
 import os
-from core import AnkiGenerator
+from .core import AnkiGenerator
 import time
 import ctypes
 
@@ -369,6 +369,3 @@ def main(page: ft.Page):
 
     update_stats()
     update_sidebar_icons()
-
-if __name__ == "__main__":
-    ft.run(main, assets_dir="assets")
