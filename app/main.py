@@ -5,9 +5,9 @@ import time
 import ctypes
 
 def main(page: ft.Page):
-    # Windows Taskbar Icon Fix
     try:
-        myappid = "anki.deck.generator.v1"
+        # Using a very unique ID to force a fresh taskbar icon association
+        myappid = "anki.generator.productivity.stable.v10"
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     except Exception:
         pass
@@ -19,8 +19,13 @@ def main(page: ft.Page):
     page.window_height = 950
     page.window_resizable = True
     page.theme_mode = ft.ThemeMode.DARK
-    page.window_icon = os.path.abspath("assets/icon.png")
-    page.icon = "icon.png"
+    
+    # --- ICON CONFIGURATION ---
+    # We use an absolute path for the window/taskbar icon on Desktop
+    abs_icon_path = os.path.join(os.getcwd(), "assets", "icon.png")
+    page.window_icon = abs_icon_path
+    page.icon = "icon.png" # Favicon filename relative to assets folder
+    page.update() # Apply icon changes immediately
     
     # Remove all default margins and gaps!
     page.padding = 0
