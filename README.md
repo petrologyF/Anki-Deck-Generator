@@ -1,4 +1,4 @@
-# Anki Deck Generator [VS Code Edition]
+# Anki Deck Generator
 
 JSON形式の単語リストから、高品質なAnkiデッキ（.apkgファイル）を自動生成するためのデスクトップツールです。VS Codeをリスペクトしたプロフェッショナルなデザインで、効率的な学習をサポートします。
 

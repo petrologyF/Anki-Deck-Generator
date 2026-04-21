@@ -1,1 +1,1 @@
-# Anki Deck Generator Package
+# Anki Deck Generator

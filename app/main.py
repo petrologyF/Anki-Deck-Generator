@@ -7,24 +7,25 @@ import ctypes
 def main(page: ft.Page):
     try:
         # Using a very unique ID to force a fresh taskbar icon association
-        myappid = "anki.generator.productivity.stable.v10"
+        myappid = "anki.generator.productivity.stable.v12" # ユニークなID
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     except Exception:
         pass
 
     # 1. Page Initial Setup
     # ==========================================
-    page.title = "Anki Deck Generator [VS Code Edition]"
+    page.title = "Anki Deck Generator"
     page.window_width = 1400
     page.window_height = 950
     page.window_resizable = True
     page.theme_mode = ft.ThemeMode.DARK
     
     # --- ICON CONFIGURATION ---
-    # We use an absolute path for the window/taskbar icon on Desktop
-    abs_icon_path = os.path.join(os.getcwd(), "assets", "icon.png")
-    page.window_icon = abs_icon_path
-    page.icon = "icon.png" # Favicon filename relative to assets folder
+    # デスクトップアプリとしてのウィンドウアイコン（パスの先頭に / をつける）
+    page.window_icon = "/icon.png" 
+
+    # Webアプリとして動かした場合のファビオン
+    page.icon = "/icon.png"
     page.update() # Apply icon changes immediately
     
     # Remove all default margins and gaps!
@@ -37,7 +38,6 @@ def main(page: ft.Page):
     page.theme = ft.Theme(font_family="Outfit")
 
     generator = AnkiGenerator()
-    ICON_PATH = os.path.abspath(r"assets/icon.png")
 
     VS_COLORS = {
         ft.ThemeMode.DARK: {
