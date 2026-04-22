@@ -1,0 +1,18 @@
+{
+  "Superfluous": {
+    "reading": "suːpəˈfluːəs",
+    "pos": "adj.",
+    "meaning": "Necessary? No, it's more than enough. Unnecessary.",
+    "synonyms": "extra, redundant, excess",
+    "example": "The report was already clear, so adding more details was superfluous.",
+    "tags": ["vocabulary", "advanced"]
+  },
+  "Ephemeral": {
+    "reading": "ɪˈfemərəl",
+    "pos": "adj.",
+    "meaning": "Lasting for a very short time.",
+    "synonyms": "short-lived, transient, fleeting",
+    "example": "The beauty of cherry blossoms is ephemeral, lasting only a few days.",
+    "tags": ["vocabulary", "nature"]
+  }
+}

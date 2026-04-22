@@ -1,393 +1,211 @@
 {
-  "Prerequisite": {
-    "meaning": "履修必須条件、先修条件",
+  "Eukaryotes": {
+    "meaning": "真核生物",
     "pos": "n.",
-    "reading": "プリレクイジット",
-    "synonyms": "requirement, precondition",
-    "example": "Mineralogy is a prerequisite for enrolling in the Advanced Petrology course.",
+    "reading": "ユーカリオーツ",
+    "synonyms": "Eucaryota",
+    "example": "The diversification of eukaryotes during the Proterozoic led to more complex life forms.",
     "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Registration": {
-    "meaning": "履修登録、登録",
-    "pos": "n.",
-    "reading": "レジストレイション",
-    "synonyms": "enrollment, sign-up",
-    "example": "Late registration for the field geology module requires approval from the Dean.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Transcript": {
-    "meaning": "成績証明書",
-    "pos": "n.",
-    "reading": "トランスクリプト",
-    "synonyms": "academic record",
-    "example": "You must submit an official transcript when applying for the geology exchange program.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Audit": {
-    "meaning": "聴講（単位なしの出席）",
-    "pos": "v./n.",
-    "reading": "オーディット",
-    "synonyms": "sit in on",
-    "example": "I decided to audit the Geophysics lecture to broaden my understanding of mantle dynamics.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Withdrawal": {
-    "meaning": "履修取消、撤退",
-    "pos": "n.",
-    "reading": "ウィズドローアル",
-    "synonyms": "cancellation, drop",
-    "example": "The deadline for course withdrawal without academic penalty is next Friday.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Elective": {
-    "meaning": "選択科目",
-    "pos": "n./adj.",
-    "reading": "イレクティブ",
-    "synonyms": "optional course",
-    "example": "Students can choose Volcanology as an elective during their final year.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Thesis": {
-    "meaning": "論文（主に学士・修士）",
-    "pos": "n.",
-    "reading": "スィーシス",
-    "synonyms": "dissertation (MA/BS level), treatise",
-    "example": "My master's thesis focuses on the metamorphic evolution of the Hida Belt.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Dissertation": {
-    "meaning": "学位論文（主に博士）",
-    "pos": "n.",
-    "reading": "ディサテイション",
-    "synonyms": "doctoral thesis",
-    "example": "His dissertation provided new constraints on the timing of the India-Asia collision.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Citation": {
-    "meaning": "引用、出典",
-    "pos": "n.",
-    "reading": "サイテイション",
-    "synonyms": "reference, source",
-    "example": "Proper citation is mandatory when discussing previous tectonic models.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Plagiarism": {
-    "meaning": "剽窃、盗用",
-    "pos": "n.",
-    "reading": "プレイジャリズム",
-    "synonyms": "academic fraud, copying",
-    "example": "The university has strict policies against plagiarism in scientific reporting.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
-    ]
-  },
-  "Peer review": {
-    "meaning": "査読",
-    "pos": "n.",
-    "reading": "ピア・レビュー",
-    "synonyms": "scholarly review",
-    "example": "The manuscript is currently undergoing peer review in a major geology journal.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Colloquium": {
-    "meaning": "談話会、研究発表会",
-    "pos": "n.",
-    "reading": "コロキウム",
-    "synonyms": "seminar, symposium",
-    "example": "The department hosts a weekly colloquium featuring guest speakers in tectonics.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Faculty": {
-    "meaning": "教授陣、学部",
-    "pos": "n.",
-    "reading": "ファカルティ",
-    "synonyms": "academic staff, department",
-    "example": "The Faculty of Science offers several world-class programs in Earth Sciences.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Dean": {
-    "meaning": "学部長",
-    "pos": "n.",
-    "reading": "ディーン",
-    "synonyms": "head of faculty",
-    "example": "The Dean announced new funding for the purchase of a high-resolution SEM.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Registrar": {
-    "meaning": "学務担当、登録窓口",
-    "pos": "n.",
-    "reading": "レジストラ",
-    "synonyms": "academic administrator",
-    "example": "Please contact the Registrar's office to confirm your graduation status.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Scholarship": {
-    "meaning": "奨学金、助成金",
-    "pos": "n.",
-    "reading": "スカラーシップ",
-    "synonyms": "grant, financial aid",
-    "example": "She was awarded a scholarship to conduct geochemical analysis abroad.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Fellowship": {
-    "meaning": "フェローシップ、研究員給付金",
-    "pos": "n.",
-    "reading": "フェローシップ",
-    "synonyms": "research grant",
-    "example": "He received a post-doctoral fellowship to study seafloor spreading.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Commencement": {
-    "meaning": "学位授与式、卒業式",
-    "pos": "n.",
-    "reading": "コメンスメント",
-    "synonyms": "graduation ceremony",
-    "example": "The department's commencement ceremony will be held in the main auditorium.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Alumni": {
-    "meaning": "卒業生、校友",
-    "pos": "n.",
-    "reading": "アラムナイ",
-    "synonyms": "graduates",
-    "example": "Many alumni of the geology department now work in the energy industry.",
-    "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Rationale": {
-    "meaning": "論理的根拠",
-    "pos": "n.",
-    "reading": "ラショナール",
-    "synonyms": "reasoning, logic",
-    "example": "The rationale for this sampling strategy is based on previous geophysical surveys.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
-    ]
-  },
-  "Overview": {
-    "meaning": "概観",
-    "pos": "n.",
-    "reading": "オーバービュー",
-    "synonyms": "summary, general survey",
-    "example": "The first chapter provides an overview of the regional geological history.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Outline": {
-    "meaning": "発表の構成、要旨",
-    "pos": "n./v.",
-    "reading": "アウトライン",
-    "synonyms": "framework, draft",
-    "example": "Before the presentation, please provide an outline of your research findings.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Literature": {
-    "meaning": "文献",
-    "pos": "n.",
-    "reading": "リテラチャー",
-    "synonyms": "bibliography, published works",
-    "example": "A thorough review of the literature revealed a lack of isotopic data for this region.",
-    "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
-    ]
-  },
-  "Gap": {
-    "meaning": "未解明な点、ギャップ",
-    "pos": "n.",
-    "reading": "ギャップ",
-    "synonyms": "void, missing link",
-    "example": "Our research aims to bridge the gap in our understanding of slab tear mechanisms.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
-    ]
-  },
-  "Novelty": {
-    "meaning": "新規性",
-    "pos": "n.",
-    "reading": "ノベルティ",
-    "synonyms": "originality, innovation",
-    "example": "The novelty of this study lies in the application of AI to seismic interpretation.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
-    ]
-  },
-  "Contribution": {
-    "meaning": "貢献",
-    "pos": "n.",
-    "reading": "コントリビューション",
-    "synonyms": "input, advancement",
-    "example": "This paper makes a significant contribution to the field of structural geology.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
-    ]
-  },
-  "Apparatus": {
-    "meaning": "装置",
-    "pos": "n.",
-    "reading": "アパラタス",
-    "synonyms": "equipment, instrument",
-    "example": "The experimental apparatus was designed to simulate high-pressure conditions in the mantle.",
-    "tags": [
-      "Academic::Methodology",
+      "Geo::Time::Chronology",
       "Geo::Process::Dynamics"
     ]
   },
-  "Protocol": {
-    "meaning": "手順、実験実施要領",
+  "Prokaryotes": {
+    "meaning": "原核生物",
     "pos": "n.",
-    "reading": "プロトコル",
-    "synonyms": "procedure, guidelines",
-    "example": "Strict adherence to the cleaning protocol is required to avoid sample contamination.",
+    "reading": "プロカリオーツ",
+    "synonyms": "Procaryota, bacteria",
+    "example": "Prokaryotes were the dominant life forms on Earth for billions of years before the rise of oxygen.",
     "tags": [
-      "Academic::Methodology"
+      "Geo::Time::Chronology",
+      "Geo::Process::Dynamics"
     ]
   },
-  "Metric": {
-    "meaning": "評価指標",
+  "Amphibians": {
+    "meaning": "両生類",
     "pos": "n.",
-    "reading": "メトリック",
-    "synonyms": "measure, indicator",
-    "example": "The degree of roundness was used as a metric for sediment transport distance.",
+    "reading": "アンフィビアンズ",
+    "synonyms": "Amphibia",
+    "example": "The evolution of amphibians marked a significant transition from aquatic to terrestrial environments in the Paleozoic.",
     "tags": [
-      "Academic::Methodology",
+      "Geo::Time::Chronology",
+      "Geo::Field::Topography"
+    ]
+  },
+  "Reptiles": {
+    "meaning": "爬虫類",
+    "pos": "n.",
+    "reading": "レプタイルズ",
+    "synonyms": "Reptilia",
+    "example": "Reptiles became the dominant terrestrial vertebrates during the Mesozoic Era.",
+    "tags": [
+      "Geo::Time::Chronology",
+      "Geo::Time::Scale"
+    ]
+  },
+  "Foraminifera": {
+    "meaning": "有孔虫",
+    "pos": "n.",
+    "reading": "フォラミニフェラ",
+    "synonyms": "forams",
+    "example": "Foraminifera shells are widely used to reconstruct past ocean temperatures and salinity.",
+    "tags": [
+      "Geo::Lithology::Sedimentary",
+      "Geo::Time::Chronology"
+    ]
+  },
+  "Radiolarians": {
+    "meaning": "放散虫",
+    "pos": "n.",
+    "reading": "ラジオラリアンズ",
+    "synonyms": "Radiolaria",
+    "example": "Radiolarians produce intricate silica skeletons that accumulate as siliceous ooze on the deep sea floor.",
+    "tags": [
+      "Geo::Lithology::Sedimentary",
+      "Geo::Mineral::Silicate"
+    ]
+  },
+  "Photosynthesis": {
+    "meaning": "光合成",
+    "pos": "n.",
+    "reading": "フォトシンセシス",
+    "synonyms": "carbon fixation",
+    "example": "The onset of oxygenic photosynthesis by cyanobacteria led to the Great Oxidation Event.",
+    "tags": [
+      "Geo::Process::Chemical",
+      "Geo::Time::Chronology"
+    ]
+  },
+  "Mass extinction": {
+    "meaning": "大量絶滅",
+    "pos": "n.",
+    "reading": "マス・エクスティンクション",
+    "synonyms": "extinction event",
+    "example": "The end-Permian mass extinction is the most severe biotic crisis in Earth's history.",
+    "tags": [
+      "Geo::Time::Chronology",
+      "Geo::Process::Dynamics"
+    ]
+  },
+  "Index fossil": {
+    "meaning": "示準化石（年代を決定する指標）",
+    "pos": "n.",
+    "reading": "インデックス・フォシル",
+    "synonyms": "guide fossil, zone fossil",
+    "example": "An ideal index fossil must have a wide geographic distribution and a short geological range.",
+    "tags": [
+      "Geo::Time::Chronology",
+      "Geo::Field::Mapping"
+    ]
+  },
+  "Facies fossil": {
+    "meaning": "示相化石（環境を決定する指標）",
+    "pos": "n.",
+    "reading": "フェイシーズ・フォシル",
+    "synonyms": "environmental indicator",
+    "example": "Coral fossils act as a facies fossil, indicating a warm, shallow marine environment.",
+    "tags": [
+      "Geo::Lithology::Sedimentary",
+      "Geo::Field::Topography"
+    ]
+  },
+  "Unconformity": {
+    "meaning": "不整合",
+    "pos": "n.",
+    "reading": "アンコンフォーミティ",
+    "synonyms": "hiatus, erosional break",
+    "example": "The angular unconformity indicates a period of tectonic uplift and erosion prior to new deposition.",
+    "tags": [
+      "Geo::Structure::Geometry",
+      "Geo::Time::Scale"
+    ]
+  },
+  "Halite": {
+    "meaning": "岩塩",
+    "pos": "n.",
+    "reading": "ハライト",
+    "synonyms": "rock salt",
+    "example": "Halite deposits often form in restricted basins through the evaporation of seawater.",
+    "tags": [
+      "Geo::Mineral::NonSilicate",
       "Geo::Lithology::Sedimentary"
     ]
   },
-  "Comparison": {
-    "meaning": "比較",
+  "Synthetic mineral": {
+    "meaning": "人造鉱物 / 合成鉱物",
     "pos": "n.",
-    "reading": "コンパリソン",
-    "synonyms": "contrast, correlation",
-    "example": "A comparison between the two volcanic arcs reveals distinct geochemical signatures.",
+    "reading": "シンセティック・ミネラル",
+    "synonyms": "artificial mineral",
+    "example": "Synthetic minerals are produced in laboratories to study the stability of phases under high pressure.",
     "tags": [
-      "Academic::Logic",
+      "Geo::Mineral::Chemical",
       "Academic::Methodology"
     ]
   },
-  "Consistency": {
-    "meaning": "整合性",
+  "Salinity": {
+    "meaning": "塩分濃度",
     "pos": "n.",
-    "reading": "コンシステンシー",
-    "synonyms": "uniformity, coherence",
-    "example": "The results show good consistency with the existing plate tectonic model.",
+    "reading": "サリニティ",
+    "synonyms": "saltiness, halinity",
+    "example": "Variations in paleoceanic salinity can be inferred from the isotopic composition of fossil shells.",
     "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
+      "Geo::Process::Chemical",
+      "Geo::Lithology::Sedimentary"
     ]
   },
-  "Threshold": {
-    "meaning": "閾値",
+  "Shoreline": {
+    "meaning": "汀線（海岸線）",
     "pos": "n.",
-    "reading": "スレッショルド",
-    "synonyms": "limit, boundary",
-    "example": "The earthquake was triggered when the stress exceeded the frictional threshold.",
+    "reading": "ショアライン",
+    "synonyms": "coastline, strandline",
+    "example": "The migration of the shoreline is controlled by the balance between sediment supply and sea-level change.",
     "tags": [
-      "Academic::Methodology",
+      "Geo::Field::Topography",
       "Geo::Process::Dynamics"
     ]
   },
-  "Validation": {
-    "meaning": "妥当性の確認、検証",
+  "Interglacial period": {
+    "meaning": "間氷期",
     "pos": "n.",
-    "reading": "バリデイション",
-    "synonyms": "verification, proof",
-    "example": "Field observations are necessary for the validation of numerical deformation models.",
+    "reading": "インターグレイシャル・ピリオド",
+    "synonyms": "interglacial",
+    "example": "We are currently living in the Holocene, which is an interglacial period.",
     "tags": [
-      "Academic::Methodology",
-      "Academic::Logic"
+      "Geo::Time::Scale",
+      "Geo::Process::Dynamics"
     ]
   },
-  "Prospect": {
-    "meaning": "展望",
+  "Glacial period": {
+    "meaning": "氷期",
     "pos": "n.",
-    "reading": "プロスペクト",
-    "synonyms": "outlook, possibility",
-    "example": "Future prospects for geothermal energy in this region are promising.",
+    "reading": "グレイシャル・ピリオド",
+    "synonyms": "ice age, glaciation",
+    "example": "During a glacial period, large ice sheets expand across the continents, causing sea levels to drop.",
     "tags": [
-      "Academic::Logic",
-      "Geo::Field::Subsurface"
+      "Geo::Time::Scale",
+      "Geo::Process::Dynamics"
     ]
   },
-  "Acknowledgement": {
-    "meaning": "謝辞",
+  "Transgression": {
+    "meaning": "海進",
     "pos": "n.",
-    "reading": "アクノレッジメント",
-    "synonyms": "credit, recognition",
-    "example": "We include an acknowledgement for the laboratory technicians who assisted with the analysis.",
+    "reading": "トランスグレッション",
+    "synonyms": "marine transgression",
+    "example": "Marine transgression results in the landward shift of coastal facies.",
     "tags": [
-      "Academic::Methodology"
+      "Geo::Process::Dynamics",
+      "Geo::Lithology::Sedimentary"
     ]
   },
-  "Appendix": {
-    "meaning": "付録",
+  "Regression": {
+    "meaning": "海退",
     "pos": "n.",
-    "reading": "アペンディクス",
-    "synonyms": "supplement, attachment",
-    "example": "Detailed isotopic data for all samples can be found in the Appendix.",
+    "reading": "リグレッション",
+    "synonyms": "marine regression",
+    "example": "A regression can be caused by either a global drop in sea level or rapid tectonic uplift.",
     "tags": [
-      "Academic::Methodology"
-    ]
-  },
-  "Perspective": {
-    "meaning": "観点、展望",
-    "pos": "n.",
-    "reading": "パースペクティブ",
-    "synonyms": "viewpoint, angle",
-    "example": "From a petrological perspective, the rock exhibits a complex cooling history.",
-    "tags": [
-      "Academic::Logic",
-      "Academic::Methodology"
+      "Geo::Process::Dynamics",
+      "Geo::Lithology::Sedimentary"
     ]
   }
 }
