@@ -1,211 +1,156 @@
 {
-  "Eukaryotes": {
-    "meaning": "真核生物",
+  "Extended matriarchal family": {
+    "meaning": "母系制の大家族",
     "pos": "n.",
-    "reading": "ユーカリオーツ",
-    "synonyms": "Eucaryota",
-    "example": "The diversification of eukaryotes during the Proterozoic led to more complex life forms.",
+    "reading": "エクステンディッド・メイトリアーカル・ファミリー",
+    "synonyms": "matriarchal herd, multi-generational female group",
+    "example": "Fossil trackways suggest that some extinct proboscideans, much like modern elephants, moved in an extended matriarchal family structure.",
     "tags": [
-      "Geo::Time::Chronology",
-      "Geo::Process::Dynamics"
-    ]
-  },
-  "Prokaryotes": {
-    "meaning": "原核生物",
-    "pos": "n.",
-    "reading": "プロカリオーツ",
-    "synonyms": "Procaryota, bacteria",
-    "example": "Prokaryotes were the dominant life forms on Earth for billions of years before the rise of oxygen.",
-    "tags": [
-      "Geo::Time::Chronology",
-      "Geo::Process::Dynamics"
-    ]
-  },
-  "Amphibians": {
-    "meaning": "両生類",
-    "pos": "n.",
-    "reading": "アンフィビアンズ",
-    "synonyms": "Amphibia",
-    "example": "The evolution of amphibians marked a significant transition from aquatic to terrestrial environments in the Paleozoic.",
-    "tags": [
-      "Geo::Time::Chronology",
-      "Geo::Field::Topography"
-    ]
-  },
-  "Reptiles": {
-    "meaning": "爬虫類",
-    "pos": "n.",
-    "reading": "レプタイルズ",
-    "synonyms": "Reptilia",
-    "example": "Reptiles became the dominant terrestrial vertebrates during the Mesozoic Era.",
-    "tags": [
-      "Geo::Time::Chronology",
-      "Geo::Time::Scale"
-    ]
-  },
-  "Foraminifera": {
-    "meaning": "有孔虫",
-    "pos": "n.",
-    "reading": "フォラミニフェラ",
-    "synonyms": "forams",
-    "example": "Foraminifera shells are widely used to reconstruct past ocean temperatures and salinity.",
-    "tags": [
-      "Geo::Lithology::Sedimentary",
+      "Academic::Methodology",
       "Geo::Time::Chronology"
     ]
   },
-  "Radiolarians": {
-    "meaning": "放散虫",
-    "pos": "n.",
-    "reading": "ラジオラリアンズ",
-    "synonyms": "Radiolaria",
-    "example": "Radiolarians produce intricate silica skeletons that accumulate as siliceous ooze on the deep sea floor.",
+  "Perceived": {
+    "meaning": "知覚された、認識された",
+    "pos": "adj./v.",
+    "reading": "パーシーヴド",
+    "synonyms": "recognized, observed, identified",
+    "example": "The perceived risk of a flank collapse on the stratovolcano increased significantly following the detection of harmonic tremors.",
     "tags": [
-      "Geo::Lithology::Sedimentary",
-      "Geo::Mineral::Silicate"
+      "Academic::Logic",
+      "Geo::Field::Topography"
     ]
   },
-  "Photosynthesis": {
-    "meaning": "光合成",
+  "Long-lasting": {
+    "meaning": "長持ちする、長期にわたる、永続的な",
+    "pos": "adj.",
+    "reading": "ロング・ラスティング",
+    "synonyms": "enduring, prolonged, persistent",
+    "example": "The collision between the Indian and Eurasian plates resulted in a long-lasting period of regional metamorphism and crustal thickening.",
+    "tags": [
+      "Geo::Structure::Tectonics",
+      "Geo::Time::Scale"
+    ]
+  },
+  "Mediator": {
+    "meaning": "仲裁者、調停役、介在物",
     "pos": "n.",
-    "reading": "フォトシンセシス",
-    "synonyms": "carbon fixation",
-    "example": "The onset of oxygenic photosynthesis by cyanobacteria led to the Great Oxidation Event.",
+    "reading": "ミーディエイター",
+    "synonyms": "intermediary, facilitator, agent",
+    "example": "Aqueous fluids act as a crucial mediator in the partial melting of the asthenospheric mantle above subduction zones.",
     "tags": [
       "Geo::Process::Chemical",
-      "Geo::Time::Chronology"
-    ]
-  },
-  "Mass extinction": {
-    "meaning": "大量絶滅",
-    "pos": "n.",
-    "reading": "マス・エクスティンクション",
-    "synonyms": "extinction event",
-    "example": "The end-Permian mass extinction is the most severe biotic crisis in Earth's history.",
-    "tags": [
-      "Geo::Time::Chronology",
       "Geo::Process::Dynamics"
     ]
   },
-  "Index fossil": {
-    "meaning": "示準化石（年代を決定する指標）",
-    "pos": "n.",
-    "reading": "インデックス・フォシル",
-    "synonyms": "guide fossil, zone fossil",
-    "example": "An ideal index fossil must have a wide geographic distribution and a short geological range.",
+  "Disciplining": {
+    "meaning": "しつけ、規律訓練、学術分野への体系化",
+    "pos": "n./v.",
+    "reading": "ディシプリニング",
+    "synonyms": "regulating, structuring, controlling",
+    "example": "The disciplining of stratigraphy into a rigorous science was largely driven by the principles of superposition and faunal succession.",
     "tags": [
-      "Geo::Time::Chronology",
-      "Geo::Field::Mapping"
+      "Academic::Methodology",
+      "Geo::Time::Chronology"
     ]
   },
-  "Facies fossil": {
-    "meaning": "示相化石（環境を決定する指標）",
+  "Conflict": {
+    "meaning": "紛争、対立、矛盾",
     "pos": "n.",
-    "reading": "フェイシーズ・フォシル",
-    "synonyms": "environmental indicator",
-    "example": "Coral fossils act as a facies fossil, indicating a warm, shallow marine environment.",
+    "reading": "コンフリクト",
+    "synonyms": "contradiction, discrepancy, clash",
+    "example": "There is often a conflict between radiometric ages and relative biostratigraphic dates in structurally complex, highly deformed terranes.",
+    "tags": [
+      "Academic::Logic",
+      "Geo::Structure::Deformation"
+    ]
+  },
+  "Scarce": {
+    "meaning": "乏しい、不十分な、希少な",
+    "pos": "adj.",
+    "reading": "スカース",
+    "synonyms": "rare, sparse, deficient",
+    "example": "Highly incompatible elements are characteristically scarce in the depleted mantle source of typical mid-ocean ridge basalts.",
+    "tags": [
+      "Geo::Process::Chemical",
+      "Geo::Lithology::Igneous"
+    ]
+  },
+  "Pecking": {
+    "meaning": "ついばむこと、嘴でつつくこと（生痕化石や浸食の文脈で）",
+    "pos": "n./v.",
+    "reading": "ペッキング",
+    "synonyms": "striking, picking, bioerosion",
+    "example": "The fossilized ammonite shells show evidence of pecking by ancient marine predators, leaving distinct trace fossils on the surface.",
     "tags": [
       "Geo::Lithology::Sedimentary",
-      "Geo::Field::Topography"
+      "Geo::Process::Dynamics"
     ]
   },
-  "Unconformity": {
-    "meaning": "不整合",
+  "Bull": {
+    "meaning": "雄牛、大型動物の雄（古生物学などにおいて）",
     "pos": "n.",
-    "reading": "アンコンフォーミティ",
-    "synonyms": "hiatus, erosional break",
-    "example": "The angular unconformity indicates a period of tectonic uplift and erosion prior to new deposition.",
+    "reading": "ブル",
+    "synonyms": "male, stag",
+    "example": "The exceptionally robust and large fossilized femur is attributed to a mature bull of the extinct megafauna species.",
     "tags": [
-      "Geo::Structure::Geometry",
-      "Geo::Time::Scale"
+      "Academic::Methodology",
+      "Geo::Time::Chronology"
     ]
   },
-  "Halite": {
-    "meaning": "岩塩",
-    "pos": "n.",
-    "reading": "ハライト",
-    "synonyms": "rock salt",
-    "example": "Halite deposits often form in restricted basins through the evaporation of seawater.",
+  "Maintain": {
+    "meaning": "（状態を）持続させる、主張する",
+    "pos": "v.",
+    "reading": "メインテイン",
+    "synonyms": "preserve, sustain, assert",
+    "example": "Some structural geologists maintain that pure shear cannot fully account for the observed strain distribution in the mylonite zone.",
     "tags": [
-      "Geo::Mineral::NonSilicate",
-      "Geo::Lithology::Sedimentary"
+      "Academic::Logic",
+      "Geo::Structure::Deformation"
     ]
   },
-  "Synthetic mineral": {
-    "meaning": "人造鉱物 / 合成鉱物",
+  "Offspring": {
+    "meaning": "子、子孫、派生物",
     "pos": "n.",
-    "reading": "シンセティック・ミネラル",
-    "synonyms": "artificial mineral",
-    "example": "Synthetic minerals are produced in laboratories to study the stability of phases under high pressure.",
+    "reading": "オフスプリング",
+    "synonyms": "descendants, progeny, derivative",
+    "example": "Island arc magmas are often considered the petrological offspring of interactions between the subducting oceanic slab and the mantle wedge.",
     "tags": [
-      "Geo::Mineral::Chemical",
+      "Geo::Process::Chemical",
+      "Geo::Lithology::Igneous"
+    ]
+  },
+  "Graze": {
+    "meaning": "草を食べる、表面を削り取る、かすめる",
+    "pos": "v.",
+    "reading": "グレイズ",
+    "synonyms": "scrape, browse, abrade",
+    "example": "Benthic organisms would graze on the ancient microbial mats, creating complex trace fossils known as grazing trails in the sedimentary record.",
+    "tags": [
+      "Geo::Lithology::Sedimentary",
+      "Geo::Process::Dynamics"
+    ]
+  },
+  "Captivity": {
+    "meaning": "捕らわれていること、閉じ込め（包有物などの文脈で）",
+    "pos": "n.",
+    "reading": "キャプティヴィティ",
+    "synonyms": "confinement, entrapment, inclusion",
+    "example": "Volatile-rich fluids remain in structural captivity within the microscopic quartz inclusions, preserving the chemical signature of the ancient hydrothermal system.",
+    "tags": [
+      "Geo::Mineral::Silicate",
+      "Geo::Process::Chemical"
+    ]
+  },
+  "Caretake": {
+    "meaning": "～を世話する、管理する、保護する",
+    "pos": "v.",
+    "reading": "ケアテイク",
+    "synonyms": "manage, conserve, oversee",
+    "example": "Local geopark authorities caretake these globally significant geological outcrops to prevent accelerated erosion and destruction by anthropogenic activities.",
+    "tags": [
+      "Geo::Field::Mapping",
       "Academic::Methodology"
-    ]
-  },
-  "Salinity": {
-    "meaning": "塩分濃度",
-    "pos": "n.",
-    "reading": "サリニティ",
-    "synonyms": "saltiness, halinity",
-    "example": "Variations in paleoceanic salinity can be inferred from the isotopic composition of fossil shells.",
-    "tags": [
-      "Geo::Process::Chemical",
-      "Geo::Lithology::Sedimentary"
-    ]
-  },
-  "Shoreline": {
-    "meaning": "汀線（海岸線）",
-    "pos": "n.",
-    "reading": "ショアライン",
-    "synonyms": "coastline, strandline",
-    "example": "The migration of the shoreline is controlled by the balance between sediment supply and sea-level change.",
-    "tags": [
-      "Geo::Field::Topography",
-      "Geo::Process::Dynamics"
-    ]
-  },
-  "Interglacial period": {
-    "meaning": "間氷期",
-    "pos": "n.",
-    "reading": "インターグレイシャル・ピリオド",
-    "synonyms": "interglacial",
-    "example": "We are currently living in the Holocene, which is an interglacial period.",
-    "tags": [
-      "Geo::Time::Scale",
-      "Geo::Process::Dynamics"
-    ]
-  },
-  "Glacial period": {
-    "meaning": "氷期",
-    "pos": "n.",
-    "reading": "グレイシャル・ピリオド",
-    "synonyms": "ice age, glaciation",
-    "example": "During a glacial period, large ice sheets expand across the continents, causing sea levels to drop.",
-    "tags": [
-      "Geo::Time::Scale",
-      "Geo::Process::Dynamics"
-    ]
-  },
-  "Transgression": {
-    "meaning": "海進",
-    "pos": "n.",
-    "reading": "トランスグレッション",
-    "synonyms": "marine transgression",
-    "example": "Marine transgression results in the landward shift of coastal facies.",
-    "tags": [
-      "Geo::Process::Dynamics",
-      "Geo::Lithology::Sedimentary"
-    ]
-  },
-  "Regression": {
-    "meaning": "海退",
-    "pos": "n.",
-    "reading": "リグレッション",
-    "synonyms": "marine regression",
-    "example": "A regression can be caused by either a global drop in sea level or rapid tectonic uplift.",
-    "tags": [
-      "Geo::Process::Dynamics",
-      "Geo::Lithology::Sedimentary"
     ]
   }
 }

@@ -12,6 +12,7 @@ venv.bak/
 
 # Project Specific
 data/.state.json
+data/words.json
 output/*.apkg
 
 # IDEs
