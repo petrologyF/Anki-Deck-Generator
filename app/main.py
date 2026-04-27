@@ -148,14 +148,22 @@ def main(page: ft.Page):
         page.update()
 
     def on_save_json(e):
-        success, msg = generator.save_words_json(json_editor.value)
-        if success:
+        success_w, msg_w = generator.save_json(words_editor.value, "words")
+        success_o, msg_o = generator.save_json(others_editor.value, "others")
+        
+        if success_w and success_o:
             save_status.value = "✔️ Saved"
             save_btn.disabled = True
             gen_status.value = "⚠️ Ungenerated"
             update_stats()
             update_sidebar_icons()
-        page.snack_bar = ft.SnackBar(ft.Text(msg))
+            page.snack_bar = ft.SnackBar(ft.Text("Both JSONs saved successfully!"))
+        else:
+            err_msg = ""
+            if not success_w: err_msg += f"Words Error: {msg_w} "
+            if not success_o: err_msg += f"General Error: {msg_o}"
+            page.snack_bar = ft.SnackBar(ft.Text(err_msg))
+            
         page.snack_bar.open = True
         page.update()
 
@@ -201,16 +209,43 @@ def main(page: ft.Page):
     # 4. Layout Parts
     # ==========================================
 
-    # --- MAIN EDITOR ---
-    json_editor = ft.TextField(
+    # --- MAIN EDITORS ---
+    words_editor = ft.TextField(
         multiline=True,
         expand=True,
-        value=generator.read_words_json(),
+        value=generator.read_json("words"),
         text_style=ft.TextStyle(font_family="Consolas, monospace", size=13),
         border=ft.InputBorder.NONE,
         on_change=on_json_change,
         bgcolor="transparent",
         content_padding=ft.Padding.only(left=20, top=10, right=10),
+    )
+
+    others_editor = ft.TextField(
+        multiline=True,
+        expand=True,
+        value=generator.read_json("others"),
+        text_style=ft.TextStyle(font_family="Consolas, monospace", size=13),
+        border=ft.InputBorder.NONE,
+        on_change=on_json_change,
+        bgcolor="transparent",
+        content_padding=ft.Padding.only(left=20, top=10, right=10),
+    )
+
+    editor_tabs = ft.Tabs(
+        selected_index=0,
+        animation_duration=300,
+        tabs=[
+            ft.Tab(
+                text="English Words (words.json)",
+                content=words_editor,
+            ),
+            ft.Tab(
+                text="General Items (others.json)",
+                content=others_editor,
+            ),
+        ],
+        expand=True,
     )
 
     # Actions for Sidebar
@@ -241,7 +276,7 @@ def main(page: ft.Page):
             content=ft.Column([
                 make_section("STATISTICS", ft.Container(
                     content=ft.Column([
-                        ft.Text("Total Words", size=10, color="#858585"),
+                        ft.Text("Total Items", size=10, color="#858585"),
                         word_count_text,
                     ], horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                     alignment=ft.Alignment(0, 0),
@@ -345,7 +380,7 @@ def main(page: ft.Page):
     # ==========================================
 
     sidebar_container = ft.Container(content=sidebar_content, width=250)
-    editor_container = ft.Container(content=json_editor, expand=True)
+    editor_container = ft.Container(content=editor_tabs, expand=True)
 
     def update_ui_colors():
         c = VS_COLORS[page.theme_mode]

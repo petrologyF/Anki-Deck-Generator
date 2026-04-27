@@ -12,23 +12,38 @@ class AnkiGenerator:
         self.data_dir = data_dir
         self.output_dir = output_dir
         self.env_path = env_path
-        self.input_file = os.path.join(data_dir, 'words.json')
+        self.words_file = os.path.join(data_dir, 'words.json')
+        self.others_file = os.path.join(data_dir, 'others.json')
         self.state_file = os.path.join(data_dir, '.state.json')
         
         load_dotenv(self.env_path)
         self.discord_webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
         
-        self.model_id = 1776685003402
-        self.deck_id = 1
+        self.model_id_words = 1776685003402
+        self.deck_id_words = 1
+        self.model_id_others = 1776685003403
+        self.deck_id_others = 2
         
-        self.model = genanki.Model(
-            self.model_id,
+        self.model_words = genanki.Model(
+            self.model_id_words,
             'Basic (Automated Compatibility)',
             fields=[{'name': 'Front'}, {'name': 'Back'}],
             templates=[{
                 'name': 'Card 1',
                 'qfmt': '<div class="term">{{Front}}</div>',
                 'afmt': '{{FrontSide}}<hr id="answer">{{Back}}',
+            }],
+            css=self._get_css()
+        )
+
+        self.model_others = genanki.Model(
+            self.model_id_others,
+            'Basic (General)',
+            fields=[{'name': 'Front'}, {'name': 'Back'}],
+            templates=[{
+                'name': 'Card 1',
+                'qfmt': '<div class="term">{{Front}}</div>',
+                'afmt': '{{FrontSide}}<hr id="answer"><div class="meaning">{{Back}}</div>',
             }],
             css=self._get_css()
         )
@@ -90,22 +105,24 @@ class AnkiGenerator:
         self.discord_webhook_url = url
         set_key(self.env_path, 'DISCORD_WEBHOOK_URL', url)
 
-    def read_words_json(self):
-        if not os.path.exists(self.input_file):
+    def read_json(self, target="words"):
+        target_file = self.words_file if target == "words" else self.others_file
+        if not os.path.exists(target_file):
             return "{\n\n}"
         try:
-            with open(self.input_file, 'r', encoding='utf-8') as f:
+            with open(target_file, 'r', encoding='utf-8') as f:
                 return f.read()
         except Exception as e:
             return f"Error reading file: {e}"
 
-    def save_words_json(self, content):
+    def save_json(self, content, target="words"):
+        target_file = self.words_file if target == "words" else self.others_file
         try:
             # Validate JSON
             parsed = json.loads(content)
             # Try to format it out nicely when saving back
             formatted = json.dumps(parsed, indent=2, ensure_ascii=False)
-            with open(self.input_file, 'w', encoding='utf-8') as f:
+            with open(target_file, 'w', encoding='utf-8') as f:
                 f.write(formatted)
             return True, "JSON saved successfully!"
         except json.JSONDecodeError as e:
@@ -152,13 +169,30 @@ class AnkiGenerator:
         os.makedirs(self.data_dir, exist_ok=True)
         os.makedirs(self.output_dir, exist_ok=True)
         
-        if not os.path.exists(self.input_file):
-            return False, f"Error: {self.input_file} not found."
+        has_words = os.path.exists(self.words_file)
+        has_others = os.path.exists(self.others_file)
 
-        with open(self.input_file, mode='r', encoding='utf-8') as f:
-            data = json.load(f)
+        if not has_words and not has_others:
+            return False, f"Error: No data files found."
 
-        current_hash = self.get_file_hash(self.input_file)
+        data_words = {}
+        if has_words:
+            try:
+                with open(self.words_file, mode='r', encoding='utf-8') as f:
+                    data_words = json.load(f)
+            except: pass
+
+        data_others = {}
+        if has_others:
+            try:
+                with open(self.others_file, mode='r', encoding='utf-8') as f:
+                    data_others = json.load(f)
+            except: pass
+
+        words_hash = self.get_file_hash(self.words_file) if has_words else ""
+        others_hash = self.get_file_hash(self.others_file) if has_others else ""
+        current_hash = hashlib.md5((words_hash + others_hash).encode()).hexdigest()
+
         state = self.load_state()
         last_hash = state.get('last_hash')
         last_file = state.get('last_file')
@@ -170,25 +204,33 @@ class AnkiGenerator:
             status_msg = " (No changes detected - Overwriting)"
             discord_prefix = "[No Changes] "
         else:
-            first_word = next(iter(data.keys())) if data else "deck"
-            safe_word = "".join(x for x in first_word if x.isalnum() or x in " -_").strip()
+            first_key = "deck"
+            if data_words:
+                first_key = next(iter(data_words.keys()))
+            elif data_others:
+                first_key = next(iter(data_others.keys()))
+            
+            safe_word = "".join(x for x in first_key if x.isalnum() or x in " -_").strip()
             timestamp = datetime.datetime.now().strftime("%m%d%Y")
             filename = f"{timestamp}_{safe_word}.apkg"
             status_msg = ""
             discord_prefix = "[New] "
 
         output_path = os.path.join(self.output_dir, filename)
-        my_deck = genanki.Deck(self.deck_id, 'Default')
-            
-        for word, details in data.items():
-            reading = details.get('reading', '')
-            pos = details.get('pos', '')
-            meaning = details.get('meaning', '')
-            synonyms = details.get('synonyms', '')
-            example = details.get('example', '')
-            tags = details.get('tags', [])
+        
+        decks = []
 
-            back_html = f'''
+        if data_words:
+            my_deck_words = genanki.Deck(self.deck_id_words, 'English Words')
+            for word, details in data_words.items():
+                reading = details.get('reading', '')
+                pos = details.get('pos', '')
+                meaning = details.get('meaning', '')
+                synonyms = details.get('synonyms', '')
+                example = details.get('example', '')
+                tags = details.get('tags', [])
+
+                back_html = f'''
 <div style="margin-bottom: 8px;">
     <span style="font-size: 0.8em; color: #757575;">{reading}</span>
 </div>
@@ -202,15 +244,40 @@ class AnkiGenerator:
     <i>{example}</i>
 </div>
 '''
-            my_note = genanki.Note(
-                model=self.model,
-                fields=[word, back_html],
-                tags=tags
-            )
-            my_deck.add_note(my_note)
+                my_note = genanki.Note(
+                    model=self.model_words,
+                    fields=[word, back_html],
+                    tags=tags
+                )
+                my_deck_words.add_note(my_note)
+            decks.append(my_deck_words)
+
+        if data_others:
+            my_deck_others = genanki.Deck(self.deck_id_others, 'General Items')
+            for item, details in data_others.items():
+                if isinstance(details, str):
+                    back_html = details
+                    tags = []
+                elif isinstance(details, dict):
+                    back_html = details.get('back', details.get('meaning', ''))
+                    tags = details.get('tags', [])
+                else:
+                    back_html = str(details)
+                    tags = []
+
+                my_note = genanki.Note(
+                    model=self.model_others,
+                    fields=[item, back_html],
+                    tags=tags
+                )
+                my_deck_others.add_note(my_note)
+            decks.append(my_deck_others)
+
+        if not decks:
+            return False, "No valid data to generate deck."
 
         try:
-            genanki.Package(my_deck).write_to_file(output_path)
+            genanki.Package(decks).write_to_file(output_path)
             log(f"Generated: {filename}{status_msg}")
             
             self.save_state(current_hash, filename)
@@ -225,12 +292,18 @@ class AnkiGenerator:
             return False, f"Error: {e}"
 
     def get_word_count(self):
-        if not os.path.exists(self.input_file): return 0
-        try:
-            with open(self.input_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                return len(data)
-        except: return 0
+        count = 0
+        if os.path.exists(self.words_file):
+            try:
+                with open(self.words_file, 'r', encoding='utf-8') as f:
+                    count += len(json.load(f))
+            except: pass
+        if os.path.exists(self.others_file):
+            try:
+                with open(self.others_file, 'r', encoding='utf-8') as f:
+                    count += len(json.load(f))
+            except: pass
+        return count
 
     def get_recent_files(self, limit=5):
         files = glob.glob(os.path.join(self.output_dir, "*.apkg"))
