@@ -232,20 +232,47 @@ def main(page: ft.Page):
         content_padding=ft.Padding.only(left=20, top=10, right=10),
     )
 
-    editor_tabs = ft.Tabs(
-        selected_index=0,
-        animation_duration=300,
-        tabs=[
-            ft.Tab(
-                text="English Words (words.json)",
-                content=words_editor,
-            ),
-            ft.Tab(
-                text="General Items (others.json)",
-                content=others_editor,
-            ),
-        ],
-        expand=True,
+    # Custom Tabs Logic
+    def switch_tab(tab_name):
+        if tab_name == "words":
+            words_editor.visible = True
+            others_editor.visible = False
+            tab_btn_words.style = ft.ButtonStyle(bgcolor="#3b82f6", color="white", shape=ft.RoundedRectangleBorder(radius=4))
+            tab_btn_others.style = ft.ButtonStyle(bgcolor="transparent", color="#858585", shape=ft.RoundedRectangleBorder(radius=4))
+        else:
+            words_editor.visible = False
+            others_editor.visible = True
+            tab_btn_words.style = ft.ButtonStyle(bgcolor="transparent", color="#858585", shape=ft.RoundedRectangleBorder(radius=4))
+            tab_btn_others.style = ft.ButtonStyle(bgcolor="#3b82f6", color="white", shape=ft.RoundedRectangleBorder(radius=4))
+        page.update()
+
+    tab_btn_words = ft.TextButton(
+        "English Words",
+        on_click=lambda e: switch_tab("words"),
+        style=ft.ButtonStyle(bgcolor="#3b82f6", color="white", shape=ft.RoundedRectangleBorder(radius=4))
+    )
+    
+    tab_btn_others = ft.TextButton(
+        "General Items",
+        on_click=lambda e: switch_tab("others"),
+        style=ft.ButtonStyle(bgcolor="transparent", color="#858585", shape=ft.RoundedRectangleBorder(radius=4))
+    )
+
+    tabs_row = ft.Container(
+        content=ft.Row([tab_btn_words, tab_btn_others], spacing=10),
+        padding=ft.Padding(20, 10, 20, 0)
+    )
+
+    words_editor.visible = True
+    others_editor.visible = False
+
+    editor_container = ft.Container(
+        content=ft.Column([
+            tabs_row,
+            words_editor,
+            others_editor
+        ], expand=True, spacing=0),
+        expand=True
     )
 
     # Actions for Sidebar
@@ -380,7 +407,6 @@ def main(page: ft.Page):
     # ==========================================
 
     sidebar_container = ft.Container(content=sidebar_content, width=250)
-    editor_container = ft.Container(content=editor_tabs, expand=True)
 
     def update_ui_colors():
         c = VS_COLORS[page.theme_mode]
