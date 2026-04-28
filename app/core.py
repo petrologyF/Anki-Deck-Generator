@@ -18,6 +18,8 @@ class AnkiGenerator:
         
         load_dotenv(self.env_path)
         self.discord_webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
+        self.deck_name_words = os.getenv('DECK_NAME_WORDS', 'Default')
+        self.deck_name_others = os.getenv('DECK_NAME_OTHERS', 'Others')
         
         self.model_id_words = 1776685003402
         self.deck_id_words = 2059400110
@@ -105,6 +107,12 @@ class AnkiGenerator:
         self.discord_webhook_url = url
         set_key(self.env_path, 'DISCORD_WEBHOOK_URL', url)
 
+    def update_deck_names(self, words_name, others_name):
+        self.deck_name_words = words_name
+        self.deck_name_others = others_name
+        set_key(self.env_path, 'DECK_NAME_WORDS', words_name)
+        set_key(self.env_path, 'DECK_NAME_OTHERS', others_name)
+
     def read_json(self, target="words"):
         target_file = self.words_file if target == "words" else self.others_file
         if not os.path.exists(target_file):
@@ -173,7 +181,7 @@ class AnkiGenerator:
         has_others = os.path.exists(self.others_file)
 
         if not has_words and not has_others:
-            return False, f"Error: No data files found."
+            return False, "Error: No data files found."
 
         data_words = {}
         if has_words:
@@ -189,39 +197,30 @@ class AnkiGenerator:
                     data_others = json.load(f)
             except: pass
 
-        words_hash = self.get_file_hash(self.words_file) if has_words else ""
-        others_hash = self.get_file_hash(self.others_file) if has_others else ""
-        current_hash = hashlib.md5((words_hash + others_hash).encode()).hexdigest()
-
         state = self.load_state()
-        last_hash = state.get('last_hash')
-        last_file = state.get('last_file')
         
-        is_unchanged = (current_hash == last_hash) and last_file and os.path.exists(os.path.join(self.output_dir, last_file))
-        
-        if is_unchanged:
-            filename = last_file
-            status_msg = " (No changes detected - Overwriting)"
-            discord_prefix = "[No Changes] "
-        else:
-            first_key = "deck"
-            if data_words:
-                first_key = next(iter(data_words.keys()))
-            elif data_others:
-                first_key = next(iter(data_others.keys()))
-            
-            safe_word = "".join(x for x in first_key if x.isalnum() or x in " -_").strip()
-            timestamp = datetime.datetime.now().strftime("%m%d%Y")
-            filename = f"{timestamp}_{safe_word}.apkg"
-            status_msg = ""
-            discord_prefix = "[New] "
-
-        output_path = os.path.join(self.output_dir, filename)
-        
-        decks = []
-
+        # 1. Output words deck
         if data_words:
-            my_deck_words = genanki.Deck(self.deck_id_words, 'English Words')
+            words_hash = self.get_file_hash(self.words_file)
+            last_words_hash = state.get('last_words_hash')
+            last_words_file = state.get('last_words_file')
+            
+            is_unchanged = (words_hash == last_words_hash) and last_words_file and os.path.exists(os.path.join(self.output_dir, last_words_file))
+            
+            if is_unchanged:
+                filename = last_words_file
+                status_msg = " (No changes detected - Overwriting)"
+                discord_prefix = "[No Changes] "
+            else:
+                first_key = next(iter(data_words.keys()))
+                safe_word = "".join(x for x in first_key if x.isalnum() or x in " -_").strip()
+                timestamp = datetime.datetime.now().strftime("%m%d%Y")
+                filename = f"{timestamp}_{safe_word}_words.apkg"
+                status_msg = ""
+                discord_prefix = "[New] "
+
+            output_path = os.path.join(self.output_dir, filename)
+            my_deck_words = genanki.Deck(self.deck_id_words, self.deck_name_words)
             for word, details in data_words.items():
                 reading = details.get('reading', '')
                 pos = details.get('pos', '')
@@ -250,10 +249,39 @@ class AnkiGenerator:
                     tags=tags
                 )
                 my_deck_words.add_note(my_note)
-            decks.append(my_deck_words)
+                
+            try:
+                genanki.Package([my_deck_words]).write_to_file(output_path)
+                log(f"Generated: {filename}{status_msg}")
+                state['last_words_hash'] = words_hash
+                state['last_words_file'] = filename
+                discord_res = self.send_to_discord(output_path, discord_prefix)
+                log(discord_res)
+            except Exception as e:
+                log(f"Error generating words deck: {e}")
 
+        # 2. Output others deck
         if data_others:
-            my_deck_others = genanki.Deck(self.deck_id_others, 'General Items')
+            others_hash = self.get_file_hash(self.others_file)
+            last_others_hash = state.get('last_others_hash')
+            last_others_file = state.get('last_others_file')
+            
+            is_unchanged = (others_hash == last_others_hash) and last_others_file and os.path.exists(os.path.join(self.output_dir, last_others_file))
+            
+            if is_unchanged:
+                filename = last_others_file
+                status_msg = " (No changes detected - Overwriting)"
+                discord_prefix = "[No Changes] "
+            else:
+                first_key = next(iter(data_others.keys()))
+                safe_word = "".join(x for x in first_key if x.isalnum() or x in " -_").strip()
+                timestamp = datetime.datetime.now().strftime("%m%d%Y")
+                filename = f"{timestamp}_{safe_word}_others.apkg"
+                status_msg = ""
+                discord_prefix = "[New] "
+
+            output_path = os.path.join(self.output_dir, filename)
+            my_deck_others = genanki.Deck(self.deck_id_others, self.deck_name_others)
             for item, details in data_others.items():
                 if isinstance(details, str):
                     back_html = details
@@ -271,25 +299,25 @@ class AnkiGenerator:
                     tags=tags
                 )
                 my_deck_others.add_note(my_note)
-            decks.append(my_deck_others)
+                
+            try:
+                genanki.Package([my_deck_others]).write_to_file(output_path)
+                log(f"Generated: {filename}{status_msg}")
+                state['last_others_hash'] = others_hash
+                state['last_others_file'] = filename
+                discord_res = self.send_to_discord(output_path, discord_prefix)
+                log(discord_res)
+            except Exception as e:
+                log(f"Error generating others deck: {e}")
 
-        if not decks:
-            return False, "No valid data to generate deck."
-
-        try:
-            genanki.Package(decks).write_to_file(output_path)
-            log(f"Generated: {filename}{status_msg}")
+        # Save state and cleanup
+        with open(self.state_file, 'w', encoding='utf-8') as f:
+            json.dump(state, f, indent=2)
             
-            self.save_state(current_hash, filename)
-            discord_res = self.send_to_discord(output_path, discord_prefix)
-            log(discord_res)
-            
-            cleaned = self.cleanup_old_files(days=7)
-            if cleaned > 0: log(f"Cleaned up {cleaned} old files.")
-            
-            return True, f"Success: {filename} generated."
-        except Exception as e:
-            return False, f"Error: {e}"
+        cleaned = self.cleanup_old_files(days=7)
+        if cleaned > 0: log(f"Cleaned up {cleaned} old files.")
+        
+        return True, "Decks generated successfully."
 
     def get_word_count(self):
         count = 0

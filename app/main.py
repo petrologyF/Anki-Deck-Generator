@@ -126,6 +126,8 @@ def main(page: ft.Page):
         
         if webhook_input.value != generator.discord_webhook_url:
             generator.update_webhook(webhook_input.value)
+            
+        generator.update_deck_names(deck_name_words_input.value, deck_name_others_input.value)
 
         success, msg = generator.generate(log_callback=lambda m: add_log(m))
         
@@ -341,14 +343,40 @@ def main(page: ft.Page):
 
     def close_settings(e):
         settings_dialog.open = False
+        generator.update_deck_names(deck_name_words_input.value, deck_name_others_input.value)
+        if webhook_input.value != generator.discord_webhook_url:
+            generator.update_webhook(webhook_input.value)
         page.update()
+
+    deck_name_words_input = ft.TextField(
+        label="Words Deck Name (Default: Default)",
+        value=generator.deck_name_words,
+        text_size=11,
+        content_padding=ft.Padding.symmetric(horizontal=10, vertical=0),
+        height=30,
+        expand=True
+    )
+    
+    deck_name_others_input = ft.TextField(
+        label="Others Deck Name (Default: Others)",
+        value=generator.deck_name_others,
+        text_size=11,
+        content_padding=ft.Padding.symmetric(horizontal=10, vertical=0),
+        height=30,
+        expand=True
+    )
 
     settings_dialog = ft.AlertDialog(
         title=ft.Text("Settings", size=18, weight=ft.FontWeight.BOLD),
         content=ft.Container(
             content=ft.Column([
-                ft.Text("Webhook Configuration", size=12, color="#858585", weight=ft.FontWeight.BOLD),
+                ft.Text("Discord Integration", size=12, color="#858585", weight=ft.FontWeight.BOLD),
                 webhook_input,
+                ft.Divider(height=10, color="transparent"),
+                ft.Text("Anki Deck Names", size=12, color="#858585", weight=ft.FontWeight.BOLD),
+                deck_name_words_input,
+                ft.Container(height=5),
+                deck_name_others_input,
                 ft.Divider(height=20, color="transparent"),
                 ft.Row([
                     ft.Text("Dark Theme", size=14, expand=True),
