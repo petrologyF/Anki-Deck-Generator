@@ -20,9 +20,9 @@ class AnkiGenerator:
         self.discord_webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
         
         self.model_id_words = 1776685003402
-        self.deck_id_words = 1
-        self.model_id_others = 1776685003403
-        self.deck_id_others = 2
+        self.deck_id_words = 2059400110
+        self.model_id_others = 1777336163719
+        self.deck_id_others = 1847599201
         
         self.model_words = genanki.Model(
             self.model_id_words,
@@ -38,12 +38,12 @@ class AnkiGenerator:
 
         self.model_others = genanki.Model(
             self.model_id_others,
-            'Basic (General)',
+            'Basic',
             fields=[{'name': 'Front'}, {'name': 'Back'}],
             templates=[{
                 'name': 'Card 1',
-                'qfmt': '<div class="term">{{Front}}</div>',
-                'afmt': '{{FrontSide}}<hr id="answer"><div class="meaning">{{Back}}</div>',
+                'qfmt': '{{Front}}',
+                'afmt': '{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}',
             }],
             css=self._get_css()
         )
